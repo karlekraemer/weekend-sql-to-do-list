@@ -15,13 +15,6 @@ router.get('/', (req, res) => {
     })
 });
 
-// router.post('/', (req, res) => {
-//     const newTask = req.body;
-//     const queryText = `
-// @@ -21,19 +35,6 @@ router.post('/', (req, res) => {
-//     });
-// });
-
 router.get('/', (req, res) => {
     let queryText = 'SELECT * from task_table ORDER BY "id" asc;';
     pool.query(queryText)
