@@ -61,4 +61,26 @@ router.delete('/:id', (req, res) => {
     })
 });
 
+router.put('/stats/:id', (req, res) => {
+    const state = req.body.state;
+    let queryText = '';
+    if (state == 'completed') {
+        queryText = `UPDATE tasks SET status = 'completed' WHERE id = ${req.params.id};`;
+    } else if (state == 'work to do'){
+        queryText = `UPDATE tasks SET status = 'work to do' WHERE id = ${req.params.id};`;
+    } else {
+        res.sendStatus(500);
+        return;
+    }
+    pool.query(queryText)
+    .then((dbResponse) => {
+        console.log('dbResponse', dbResponse);
+        res.sendStatus(200);
+    })
+    .catch((error) => {
+        console.log('error');
+        res.sendStatus(500);
+    })
+});
+
 module.exports = router;
