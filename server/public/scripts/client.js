@@ -34,7 +34,7 @@ function getTasks() {
         console.log('GET /tasklibrary response', response);
         for (let i = 0; i < response.length; i++) {
             $('#incompleteTableBody').append(`
-                <tr data=id${response[i].id}>
+                <tr data-id=${response[i].id}>
                     <td>${response[i].task}</td>
                     <td>
                         <p id="status-change-label" for="status-change">${response[i].status}</p>
