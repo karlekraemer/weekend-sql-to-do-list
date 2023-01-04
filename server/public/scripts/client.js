@@ -38,11 +38,11 @@ function getTasks() {
                     <td>${response[i].task}</td>
                     <td>
                         <p id="status-change-label" for="status-change">${response[i].status}</p>
-                        <button class="status-cahnge">done</button>
+                        <button class="status-change">done</button>
                     </td>
                     <td>
                         <p id="delete-label" for="delete">delete task</p>
-                        <button class="delete">delete</buton>
+                        <button class="delete">delete</button>
                     </td>
                 </tr>
             `)

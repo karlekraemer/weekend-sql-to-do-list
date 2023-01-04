@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
     .catch((error) => {
         console.log('error making a query', error);
         res.sendStatus(500);
-    });
+    })
 });
 
 router.get('/:id', (req, res) => {
@@ -27,7 +27,7 @@ router.get('/:id', (req, res) => {
     .catch((error) => {
         console.log('error making query', error);
         res.sendStatus(500);
-    });
+    })
 });
 
 router.post('/', (req, res) => {
@@ -44,11 +44,21 @@ router.post('/', (req, res) => {
     .catch((error) => {
         console.log('error making insert query', error);
         res.sendStatus(500);
-    });
+    })
 });
 
 router.delete('/:id', (req, res) => {
     console.log('delete request says hi', req.params.id);
-})
+    const queryText = `DELETE from tasks WHERE id = ${req.params.id};`;
+    pool.query(queryText)
+    .then((result) => {
+        console.log(result);
+        res.sendStatus(201);
+    })
+    .catch((error) => {
+        console.log('error making a query', error);
+        res.sendStatus(500);
+    })
+});
 
 module.exports = router;
