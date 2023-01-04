@@ -6,6 +6,7 @@ function onReady() {
     console.log('we ready');
     getTasks();
     $('#submit').on('click', postTask);
+    $('#incompleteTableBody').on('click', '.delete', handleDelete);
 }
 
 function postTask () {
@@ -55,5 +56,18 @@ function getTasks() {
                 console.log('no backbround change');
             }
         }
+    });
+}
+
+function handleDelete() {
+    console.log('delete button clicked');
+    const id = $(this).parent().parent().data('id');
+    $.ajax({
+        type: 'DELETE',
+        url: `/taskLibrary/${id}`
+    }).then( function () {
+        getTasks();
+    }).catch(function(error) {
+        console.log('error deleting, ', error);
     });
 }

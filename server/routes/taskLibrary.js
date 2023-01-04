@@ -47,4 +47,8 @@ router.post('/', (req, res) => {
     });
 });
 
+router.delete('/:id', (req, res) => {
+    console.log('delete request says hi', req.params.id);
+})
+
 module.exports = router;
